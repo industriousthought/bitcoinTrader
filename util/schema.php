@@ -3,25 +3,25 @@
 
 $exchanges = array(
 
-	"BitInstant",
-	"Bitstamp",
-	"BTCChina",
-	"BTCe",
-	"BTCXIndia",
-	"Buttercoin",
-	"CloudHashing",
-	"Coinbase",
-	"CoinCorner",
-	"Coinfloor",
-	"Coinsecure",
-	"Dwolla",
-	"Gatecoin",
-	"Ghashio",
-	"Huobi",
-	"ItBit",
-	"LakeBTC",
-	"MtGox",
-	"OKCoin"
+	//"BitInstant",
+	"Bitstamp"
+	//"BTCChina",
+	//"BTCe",
+	//"BTCXIndia",
+	//"Buttercoin",
+	//"CloudHashing",
+	//"Coinbase",
+	//"CoinCorner",
+	//"Coinfloor",
+	//"Coinsecure",
+	//"Dwolla",
+	//"Gatecoin",
+	//"Ghashio",
+	//"Huobi",
+	//"ItBit",
+	//"LakeBTC",
+	//"MtGox",
+	//"OKCoin"
 );
 
 
@@ -52,9 +52,9 @@ foreach ($exchanges as &$exchange) {
 		timestamp TIMESTAMP,
 		userId VARCHAR(30),
 		orderId VARCHAR(30),
-		amount INT,
+		amount FLOAT,
 		type VARCHAR(30),
-		priceBTC INT,
+		priceBTC FLOAT,
 		currency VARCHAR(30) DEFAULT 'USD',
 		dataTime TIMESTAMP,
 		timeFilled TIMESTAMP,
@@ -65,6 +65,21 @@ foreach ($exchanges as &$exchange) {
 
 	$res = $mysqli->query($sql);
 
+	$sql = "CREATE TABLE " . $exchange . "Book (
+
+		
+		rId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+		timestamp TIMESTAMP,
+		amount FLOAT,
+		type VARCHAR(30),
+		price FLOAT,
+		currency VARCHAR(30) DEFAULT 'USD',
+        groupId VARCHAR(40) 
+	
+
+	)";
+
+	$res = $mysqli->query($sql);
 }
 
 
